@@ -1,0 +1,124 @@
+\documentclass[a4j,9pt]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{mymacro}
+\usepackage[all]{xy}
+
+% alias
+\newcommand{\dom}[1]{\ensuremath{\mathrm{dom}(#1)}}
+\newcommand{\codom}[1]{\ensuremath{\mathrm{codom}(#1)}}
+\newcommand{\comp}{\ensuremath{\mathrm{\circ}}}
+\newcommand{\id}[1]{\ensuremath{\mathit{id}_{#1}}}
+\newcommand{\Set}{\ensuremath{\mathbf{Set}圏}}
+\newcommand{\PoSet}{\ensuremath{\mathbf{PoSet}圏}}
+
+
+% arrow
+\newcommand{\aID}[1]{\ar@(ur,ul)_{id_{#1}}}
+
+\renewcommand{\lstlistingname}{リスト}
+\lstset{
+escapechar=\%,%
+columns=[l]{fullflexible}, % 文字をつめる
+tabsize={8},%
+basicstyle=\footnotesize,%
+classoffset=1,%
+frame=tRBl,framesep=5pt,%
+showstringspaces=false,%
+numbers=left,stepnumber=1,numberstyle=\footnotesize%
+}
+
+\usepackage{amsthm}
+\newtheorem{definition}{定義}[section]
+\newtheorem{examples}{例}[section]
+
+
+\begin{document}
+\title{休日カフェタイム \#1}
+\author{csnagoya}
+\maketitle
+\section{定義1.1: 圏の定義}
+\begin{enumerate}
+\item 対象(object)のコレクション
+\item 射(arrow または morphism)のコレクション
+\item 各arrow $f$には\dom{f}と\codom{f}が存在する。
+  $f : A \to B$と記述する。(Aが\dom{f}、Bが\codom{f})
+\item arrow同士の合成(composition)が可能で、これを$g \comp f$と書く。
+  ただし$f : A \to B$で$g : B \to C$のとき$g \comp f : A \to C$。
+  このとき$h \comp ( g \comp f) = (h \comp g) \comp f$。
+\item 各オブジェクト Aに対して、$\id{A} : A \to A$というarrowが必ず存在し、次の式をみたす。
+  $\forall f : A \to B, \id{B} \comp f = f$かつ$f = f \comp \id{A}$。
+\end{enumerate}
+
+\[
+\xymatrix{
+  A \aID{A} \ar[r]|f & B \aID{B}
+}
+\]
+
+\section{例1.2: \Set}\label{set}
+
+\begin{tabular}{|c|l|}
+\hline
+object & 集合 \\\hline
+arrow  & 集合の関数 \\\hline
+composite & 集合論的な関数合成 \\\hline
+\end{tabular}
+
+\begin{enumerate}
+\item \Set のオブジェクトは集合
+\item \Set の $f : A \to B$は、AからBの関数
+\item 関数には\dom{f}と\codom{f}が存在する
+\item
+\item
+\end{enumerate}
+
+\section{例1.3: \PoSet}
+
+\begin{tabular}{|c|l|}
+\hline
+object & 集合と半順序関係の組 \\\hline
+arrow  & 集合の関数 \\\hline
+composite & 集合論的な関数合成 \\\hline
+\end{tabular}
+
+
+\subsection{その前に、半順序とは}
+半順序(partial order)は次の条件を満す関係のこと。
+
+\begin{enumerate}
+\item 反射律 $x \le x$
+\item 推移律 $x \le y$かつ$y \le z$ならば、$x \le z$
+\item 反対称律 $x \le y$かつ$y \le x$ならば$x = y$
+\end{enumerate}
+
+不等号を一般化したやつ。
+
+そして、次の関係を満す$f : A -> B$をorder preservingな関数と呼ぶ。
+\[
+x \le_A y ならば f(x) \le_B f(y)
+\]
+
+\subsection{圏かどうかの確認}
+\begin{enumerate}
+\item \PoSet のオブジェクトは集合とその集合の上の半順序関係の組
+\item \PoSet の $f : A \to B$は、AからBのorder preservingな関数
+\item 関数には\dom{f}と\codom{f}が存在する
+\item 合成してもorder preservingなままであることを示す。
+
+$f : A \to B$、$ g : B \to C$、$x,y \in A$について、
+$f$はorder preservingなので$f(x) \le_B f(y)$。
+$g$はorder preservingなので$g(f(x)) \le_C g(f(y))$。
+よって$(f \comp g)(x)\le_C (f \comp g)(y)$。
+
+\comp が結合則を満すことは\sref{set}で示されている。
+
+\item $id_A(x)= x$がorder preservingであることを示す。
+$x = id_A(x)$、$y = id_A(y)$なので、
+$x \le_A y$ならば$id_A(x) \le_A id_A(y)$。
+
+$id_A(x) = x$が
+$\id{B} \comp f = f$かつ$f = f \comp \id{A}$を満すことは、
+\sref{set}で示されている。
+\end{enumerate}
+
+\end{document}

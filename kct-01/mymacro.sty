@@ -1,0 +1,87 @@
+\usepackage[dvipdfmx]{color}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[final]{listings}
+\usepackage{amsmath}
+\usepackage{jlisting}
+
+\usepackage[dvipdfm,
+  final,
+  colorlinks=false,
+  bookmarks=true,
+  bookmarksopen=true,
+  bookmarksnumbered=true,
+  pdftitle={休日カフェタイム},
+  pdfauthor={csnagoya},
+  pdfborder={0 0 0},
+  bookmarkstype=toc]{hyperref}
+\AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}
+\bibliographystyle{jipsj}
+\renewcommand{\lstlistingname}{リスト}
+\lstset{
+escapechar=\%,%
+columns=[l]{fullflexible}, % 文字をつめる
+tabsize={8},%
+basicstyle=\footnotesize,%
+classoffset=1,%
+frame=tRBl,framesep=5pt,%
+showstringspaces=false,%
+numbers=left,stepnumber=1,numberstyle=\footnotesize%
+}
+
+\usepackage{udline}
+%\newcommand{\del}[1]{{\color{red}{\protect\Sl{#1}}}}
+%\newcommand{\ins}[1]{{\color{blue}{#1}}}
+\newcommand{\del}[1]{}
+\newcommand{\ins}[1]{#1}
+
+\newcommand{\fixme}[1]{\colorbox{yellow}{#1}}
+
+\newcommand{\figref}[1]{図\ref{#1}}
+\newcommand{\tabref}[1]{表\ref{#1}}
+\newcommand{\sref}[1]{\ref{#1}節}
+
+\bibliographystyle{jipsj}
+\newcommand{\step}[1]{\subsection*{#1}}
+\renewcommand{\lstlistingname}{リスト}
+\lstset{
+escapechar=\%,%
+columns=[l]{fullflexible}, % 文字をつめる
+tabsize={8},%
+basicstyle=\footnotesize,%
+classoffset=1,%
+frame=tRBl,framesep=5pt,%
+showstringspaces=false,%
+numbers=left,stepnumber=1,numberstyle=\footnotesize%
+}
+
+\newcommand{\tracelog}{\ensuremath{l}}
+\newcommand{\loc}{\ensuremath{\ell}}
+\newcommand{\event}{\ensuremath{\mathtt{e}}}
+\newcommand{\res}{\ensuremath{\mathtt{r}}}
+
+\newcommand{\Event}{\ensuremath{\mathcal{E}}}
+\newcommand{\Res}{\ensuremath{\mathcal{R}}}
+
+\newcommand{\val}{\ensuremath{\mathrm{val}}}
+
+\newcommand{\Log}{\ensuremath{\mathtt{L}}}
+\newcommand{\GoodLog}{\ensuremath{\mathtt{GL}}}
+\newcommand{\BadLog}{\ensuremath{\mathtt{BL}}}
+\newcommand{\gl}{\ensuremath{\tracelog_g}}
+\newcommand{\bl}{\ensuremath{\tracelog_b}}
+\newcommand{\Path}[1]{\ensuremath{\mathtt{path}(#1)}}
+\newcommand{\ch}{\ensuremath{\mathrm{Ch}}}
+\newcommand{\st}{\ensuremath{\text{s.t.}\,\,}}
+\newcommand{\ife}{\ensuremath{\text{if exists}\,\,}}
+
+\newcommand{\leom}{Lorem ipsum dolor sit amet, consectetur
+  adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+  exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+  cupidatat non proident, sunt in culpa qui officia deserunt mollit
+  anim id est laborum.}
+\renewcommand{\emph}[1]{\textbf{#1}}
+
+

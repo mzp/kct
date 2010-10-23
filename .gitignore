@@ -1,0 +1,10 @@
+*.out
+*~
+*.fls
+*.dvi
+*.aux
+*.pdf
+.omakedb
+.omakedb.lock
+*.omc
+*.log
